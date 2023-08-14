@@ -63,7 +63,7 @@ const LandingPage = () => {
         volume={volume}
         controls={false}
         config={{file: { attributes: {controlsList: 'nodownload', disablePictureInPicture: true}}}}
-        url={videoFile}        
+      //  url={videoFile}        
         />     
         {!play ? (
           <div className='firstDiv'>

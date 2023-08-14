@@ -65,8 +65,6 @@ const UserPage = () => {
 
             refetchUserData();
             setShowUserNameModal(false);
-            console.log("image:", image);
-            console.log("preview:", preview);
 
         } catch (error) {
             if (error.response && error.response.status === 400) {
@@ -105,6 +103,25 @@ const UserPage = () => {
         }
     };
 
+    const handleSaveNewProfilePic = async (preview) => {
+        if (preview) {
+            console.log("length of preview: ",preview.length);
+                try {
+                    await axiosInstance.put(`/user/profile/profile_pic`, { profile_pic: preview });
+                    console.log("profile pic");
+
+                    refetchUserData();
+
+                } catch (error) {
+                    console.error("Error updating profile_pic: ", error.response);
+                }
+            }
+        };
+    
+
+
+
+
     useEffect(() => {
         const loggedInUser = localStorage.getItem('jwtToken');
 
@@ -142,27 +159,28 @@ const UserPage = () => {
                             <MDBCard className="mb-4 card-container">
                                 <MDBCardBody className="text-center">
                                     {preview ? (
-                                    <MDBCardImage
-                                        src={preview}
-                                        alt="avatar"
-                                        className="rounded-circle"
-                                        style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-                                        onClick={(event) => {
-                                            event.preventDefault();
-                                            fileInputRef.current.click();
-                                        }}
-                                        fluid />
-                                     ) : (
-                                    <MDBCardImage
-                                        src={profilepic_sample2}
-                                        alt="avatar"
-                                        className="rounded-circle"
-                                        style={{ width: '150px', height: '150px' }}
-                                        onClick={(event) => {
-                                            event.preventDefault();
-                                            fileInputRef.current.click();
-                                        }}
-                                        fluid />
+                                        <MDBCardImage
+                                            
+                                            src={preview}
+                                            alt="avatar"
+                                            className="rounded-circle"
+                                            style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+                                            onClick={(event) => {
+                                                event.preventDefault();
+                                                fileInputRef.current.click();
+                                            }}
+                                            fluid />
+                                    ) : (
+                                        <MDBCardImage
+                                            src={profilepic_sample2}
+                                            alt="avatar"
+                                            className="rounded-circle"
+                                            style={{ width: '150px', height: '150px' }}
+                                            onClick={(event) => {
+                                                event.preventDefault();
+                                                fileInputRef.current.click();
+                                            }}
+                                            fluid />
                                     )}
                                 </MDBCardBody>
                                 <form>
@@ -179,8 +197,10 @@ const UserPage = () => {
                                             }
                                         }} />
                                 </form>
+                                {console.log("Preview:", preview)}
                                 {preview && (
-                                <button className="profile_pic_button"
+                                    <button className="profile_pic_button"
+                                            onClick={() => handleSaveNewProfilePic(preview)}
                                     >SAVE PROFILE PICTURE</button>
                                 )}
                             </MDBCard>
