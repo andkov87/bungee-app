@@ -1,0 +1,585 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+/*.bg-change1 {
+    background-color: rgba(191, 191, 191, 255) !important;
+}
+
+.bg-change2 {
+    background-color: rgba(191, 191, 191, 255) !important;
+}
+
+.bg-change3 {
+    background-color: rgba(191, 191, 191, 255) !important;
+}
+
+.bg-change4 {
+    background-color: rgba(191, 191, 191, 255) !important;
+}*/
+
+.hover-effect1 {
+    color: black !important;
+}
+
+.booking-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.booking-panel-container {
+    background-image: url('/src/pages/bungee\ pics/bungee23.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.arrow-container {
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    z-index: 2;
+}
+
+.arrow-circle {
+    width: 2vw;
+    height: 4vh;
+    border-radius: 60%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.left-arrow {
+    font-size: 20px;
+    color: #333; /* Arrow color */
+  }
+
+.summary-container {
+    width: 18%;
+    height: 55%;
+    transform: translate(45%, 26%);
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    background-color: rgba(51, 51, 51, 255);
+}
+
+.summary-text-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.summary-header {
+    font-size: 22px;
+    margin-top: 5vh;
+    color: white;
+}
+
+.summary-details-text {
+    width: 80%;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.details-text {
+    font-size: 18px;
+    line-height: 50px;
+}
+
+.last-heading {
+    position: relative;
+}
+
+.last-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 2vh;
+    /* Adjust the distance from the text to the underline */
+    left: 0;
+    width: 100%;
+    height: 1px;
+    /* Adjust the thickness of the underline */
+    background-color: rgba(81, 81, 81, 255);
+}
+
+.underline {
+    width: 80%;
+    height: 0px;
+}
+
+.site {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 18%;
+    height: 65%;
+    top: 25%;
+    /* Center vertically */
+    left: 0%;
+    bottom: 0;
+    /* Center horizontally */
+    position: relative;
+    /* Add position relative to .site container */
+}
+
+.site-choose1 {
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    width: 90%;
+    height: 15%;
+    top: 15%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Adjust for vertical and horizontal centering */
+}
+
+.site-choose2 {
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+    width: 90%;
+    height: 55%;
+    top: 42%;
+    /* Position below .site-choose1 */
+    left: 5.5%;
+    /* Center horizontally */
+    transform: translateY(-30%);
+    /* Adjust for vertical centering */
+}
+
+.site-text-container {
+    font-family: 'Archivo Black', sans-serif;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*first-panel css*/
+.site-text1 {
+    font-size: 15px;
+    color: rgba(121, 121, 121, 255);
+}
+
+/*first-panel css*/
+.site-text2 {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.site-variations-text-container {
+    font-family: 'Archivo Black', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+/*first-panel css*/
+.site-text3 {
+    font-size: 17px;
+    color: rgba(121, 121, 121, 255);
+
+}
+
+/*first-panel css*/
+.site-text4 {
+    color: rgb(37, 150, 190);
+    font-size: 20px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+.site-text5 {
+    color: rgb(37, 150, 190);
+    font-size: 20px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+.site-text6 {
+    color: rgb(37, 150, 190);
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+
+.activity {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 18%;
+    height: 65%;
+    top: 25%;
+    /* Center vertically */
+    left: -6%;
+    bottom: 0;
+    /* Center horizontally */
+    position: relative;
+    /* Add position relative to .site container */
+}
+
+/*second-panel css*/
+.activity-choose1 {
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    width: 90%;
+    height: 15%;
+    top: 15%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Adjust for vertical and horizontal centering */
+}
+
+.activity-choose2 {
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    width: 95%;
+    height: 35%;
+    top: 36%;
+    /* Position below .site-choose1 */
+    left: 2.5%;
+    /* Center horizontally */
+    transform: translateY(-30%);
+    /* Adjust for vertical centering */
+}
+
+.activity-text-container {
+    font-family: 'Archivo Black', sans-serif;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+/*second-panel css*/
+.activity-text1 {
+    font-size: 15px;
+    color: rgba(121, 121, 121, 255);
+}
+
+/*second-panel css*/
+.activity-text2 {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.activity-text-container2 {
+    font-family: 'Archivo Black', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    font-size: 25px;
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.activity-text3 {
+    font-size: 20px;
+    color: rgb(37, 150, 190);
+    transition: color 0.5s;
+}
+
+
+.calendar {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 18%;
+    height: 65%;
+    top: 25%;
+    /* Center vertically */
+    left: -12%;
+    bottom: 0;
+    /* Center horizontally */
+    position: relative;
+    /* Add position relative to .site container */
+}
+
+.calendar-choose1 {
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 60px;
+    width: 90%;
+    height: 15%;
+    top: 15%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Adjust for vertical and horizontal centering */
+}
+
+.calendar-choose2 {
+    background-color: gray;
+    position: absolute;
+    border-radius: 60px;
+    width: 95%;
+    height: 61%;
+    top: 45%;
+    /* Position below .site-choose1 */
+    left: 3%;
+    /* Center horizontally */
+    transform: translateY(-30%);
+    /* Adjust for vertical centering */
+    z-index: 2;
+}
+
+.calendar-date-container {
+    font-family: 'Archivo Black', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10%;
+}
+
+.calendar-text1 {
+    font-size: 15px;
+    color: rgba(121, 121, 121, 255);
+
+}
+
+.calendar-text2 {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.timepicker {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    height: 65%;
+    top: 25%;
+    /* Center vertically */
+    left: -18%;
+    bottom: 0;
+    /* Center horizontally */
+    position: relative;
+    /* Add position relative to .site container */
+}
+
+.timepicker-choose1 {
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    width: 90%;
+    height: 15%;
+    top: 15%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Adjust for vertical and horizontal centering */
+}
+
+.timepicker-container1 {
+    font-family: 'Archivo Black', sans-serif;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+.timepicker-text1 {
+    font-size: 15px;
+    color: rgba(121, 121, 121, 255);
+}
+
+.timepicker-text2 {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.timepicker-choose2 {
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    border-radius: 60px;
+    width: 95%;
+    height: 60%;
+    top: 43%;
+    /* Position below .site-choose1 */
+    left: 3%;
+    /* Center horizontally */
+    transform: translateY(-30%);
+    /* Adjust for vertical centering */
+}
+
+.timepicker-container h3 {
+    margin-top: 2vh;
+    font-weight: bolder;
+    text-align: center;
+    color: rgb(37, 150, 190);
+
+}
+
+.timepicker-heading {
+    font-family: 'Archivo Black', sans-serif;
+    margin-top: 2vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    color: rgba(121, 121, 121, 255);
+    text-align: center;
+}
+
+.time-price-slot-container {
+    width: 100%;
+    display: grid;
+    margin-top: 10px;
+    
+}
+
+.time-picker-timecolumn.active-time-slot {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: rgb(37, 150, 190);
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.time-picker-timecolumn.inactive-time-slot {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: lightgray;
+    line-height: 35px;
+    
+}
+
+.time-picker-pricecolumn.active-time-slot {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: rgb(37, 150, 190);
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.time-picker-pricecolumn.inactive-time-slot {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: lightgray;
+    line-height: 35px;
+}
+
+
+.time-slot-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+}
+
+
+.location-text {
+    font-size: 16px;
+}
+
+.activity-text {
+    font-size: 16px;
+}
+
+.date-text {
+    font-size: 16px;
+}
+
+.time-text {
+    font-size: 16px;
+}
+
+.total-details-text {
+    width: 80%;    
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-text {
+    font-size: 16px;
+}
+
+.book-button {
+    background-color: rgb(37, 150, 190);
+    color: white;
+    border-radius: 30px;
+    height: 5vh;
+    width: 7vw; 
+}
+
+.succesfull-message-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.succesfull-message {
+    color: rgb(37, 150, 190);
+    font-size: 14px;
+}
+
+.back-to-home-button {
+    background-color: rgb(37, 150, 190);
+    color: white;
+    font-size: smaller;
+    border-radius: 30px;
+}

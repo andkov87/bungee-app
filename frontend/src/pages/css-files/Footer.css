@@ -1,0 +1,14 @@
+.footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 17vh;
+}
+
+.footer-container {
+    width: 100%;
+  }
+
+  .text-white {
+    color: white;
+  }
+

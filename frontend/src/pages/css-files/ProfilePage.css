@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+
+.profile-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: rgba(223,219,208,255);
+  background-image: url('../bungee pics/bungee25.jpg');
+  background-position-x:left 20%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  
+}
+
+.profile_pic_button{
+  width: 40%;
+  background-color: rgb(37, 150, 190);
+  color: white;
+  border-radius: 30px; 
+  margin-bottom: 15px; 
+  font-size: smaller;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-account-button {
+  width: 30%;
+  background-color: red;
+  color: white;
+  font-size: smaller;
+  font-weight: 700;
+  border-radius: 30px;
+}
+
+.username-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+}
+
+.change-username-button {
+  width: 24%;
+  background-color: rgb(37, 150, 190);
+  height: 99%;
+  color: white;
+  font-size: smaller;
+  font-weight: 700;
+  border-radius: 30px;
+}
+
+.email-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.change-email-button {
+  width: 24%;
+  background-color: rgb(37, 150, 190);
+  height: 100%;
+  color: white;
+  font-size: smaller;
+  border-radius: 30px;
+}
+
+.reservation-headbox {
+  background-color: rgb(37, 150, 190);
+  padding: 10px 30px;
+  color:white;
+  font-size: 1.5vw;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.rounded-circle {
+  cursor: pointer;
+}
+

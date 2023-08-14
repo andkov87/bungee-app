@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+.cascading-right {
+  margin-right: -8vw;
+}
+
+.registration-page-container {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(228,224,213,255);
+}
+
+.button-message-wrap {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(34%);
+  gap: 15px;
+}
+
+
+.signup-button {
+  width: 40%;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9vw;
+  font-weight: bolder;
+  cursor: pointer;
+  padding: 10px 12px;
+}
+
+.success {
+  font-family: 'Archivo Black', sans-serif;
+  width: 100%;
+  font-size: large;
+  color: green;
+}
+
+.regpage-link {
+  line-height: 6vh;
+}
+
+.error {
+  color: red;
+}
+
+@media (max-width: 900px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}

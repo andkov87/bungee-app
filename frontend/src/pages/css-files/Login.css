@@ -1,0 +1,26 @@
+.login-button {
+    background-color: rgb(37, 150, 190);
+    color: #221;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.9vw;
+    font-weight: bolder;
+    cursor: pointer;
+    padding: 10px 12px;
+}
+
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: wheat;
+    background-image: url('../bungee pics/bungee20.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .loginpage-link {
+    line-height: 4vh;
+  }
+

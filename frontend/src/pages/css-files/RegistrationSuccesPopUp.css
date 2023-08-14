@@ -1,0 +1,38 @@
+.modal-class {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-panel-reg {
+    width: 22%;
+    height: 18%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    gap: 30px;
+    border-radius: 30px;
+    position: relative;
+}
+
+.modal-panel-reg h2 {
+    font-size: 21px;
+    font-family: 'Archivo Black', sans-serif;
+    color: whitesmoke;
+}
+
+.modal-button-container { 
+    display: flex;
+    gap: 15px;
+}
+
+.modal-button-container button {
+    border-radius: 20px;
+    width: 9vw;
+    background-color: rgb(37, 150, 190);
+}
+
