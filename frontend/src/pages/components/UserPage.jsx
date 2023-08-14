@@ -30,6 +30,8 @@ const UserPage = () => {
     const [image, setImage] = useState();
     const [preview, setPreview] = useState();
 
+    const [showButton, setShowButton] = useState(false);
+
 
     const fileInputRef = useRef();
 
@@ -45,7 +47,7 @@ const UserPage = () => {
         } else {
             setPreview(null);
         }
-    }, [image])
+    }, [preview, image])
 
 
     const handleDeleteProfile = async () => {
@@ -104,22 +106,20 @@ const UserPage = () => {
     };
 
     const handleSaveNewProfilePic = async (preview) => {
-        if (preview) {
-            console.log("length of preview: ",preview.length);
                 try {
                     await axiosInstance.put(`/user/profile/profile_pic`, { profile_pic: preview });
-                    console.log("profile pic");
-
                     refetchUserData();
+
+
+                   // console.log(userData.profile_pic);
+                    setPreview(userData.profile_pic);
+                    setShowButton(false);
 
                 } catch (error) {
                     console.error("Error updating profile_pic: ", error.response);
                 }
-            }
         };
     
-
-
 
 
     useEffect(() => {
@@ -159,12 +159,13 @@ const UserPage = () => {
                             <MDBCard className="mb-4 card-container">
                                 <MDBCardBody className="text-center">
                                     {preview ? (
+                                        
                                         <MDBCardImage
                                             
                                             src={preview}
                                             alt="avatar"
                                             className="rounded-circle"
-                                            style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+                                            style={{ width: '180px', height: '180px', objectFit: 'cover' }}
                                             onClick={(event) => {
                                                 event.preventDefault();
                                                 fileInputRef.current.click();
@@ -172,10 +173,10 @@ const UserPage = () => {
                                             fluid />
                                     ) : (
                                         <MDBCardImage
-                                            src={profilepic_sample2}
+                                            src={userData.profile_pic ? userData.profile_pic : profilepic_sample2}
                                             alt="avatar"
                                             className="rounded-circle"
-                                            style={{ width: '150px', height: '150px' }}
+                                            style={{ width: '180px', height: '180px' }}
                                             onClick={(event) => {
                                                 event.preventDefault();
                                                 fileInputRef.current.click();
@@ -192,13 +193,13 @@ const UserPage = () => {
                                             const file = event.target.files[0];
                                             if (file && file.type.substring(0, 5) === "image") {
                                                 setImage(file);
+                                                setShowButton(true);
                                             } else {
                                                 setImage(null);
                                             }
                                         }} />
                                 </form>
-                                {console.log("Preview:", preview)}
-                                {preview && (
+                                {showButton && (
                                     <button className="profile_pic_button"
                                             onClick={() => handleSaveNewProfilePic(preview)}
                                     >SAVE PROFILE PICTURE</button>
