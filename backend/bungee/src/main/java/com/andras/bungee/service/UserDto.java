@@ -15,6 +15,7 @@ public class UserDto {
     private String lastName;
     private String userName;
     private String email;
+    private String profile_pic;
 
     public static UserDto fromUser(User user) {
         return UserDto.builder()
@@ -22,6 +23,7 @@ public class UserDto {
                 .lastName(user.getLastName())
                 .userName(user.getUsername())
                 .email(user.getEmail())
+                .profile_pic(user.getProfile_pic())
                 .build();
     }
 }

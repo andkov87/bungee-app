@@ -40,7 +40,7 @@ public class User implements UserDetails {
     @Enumerated
     private Role role;
 
-    @Column(name = "profile_pic")
+    @Column(name = "profile_pic", columnDefinition = "LONGTEXT")
     private String profile_pic;
 
     @OneToMany(cascade = CascadeType.ALL)

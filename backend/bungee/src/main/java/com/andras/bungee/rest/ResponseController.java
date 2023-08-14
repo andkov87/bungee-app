@@ -15,6 +15,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,9 +28,7 @@ import java.util.Map;
 public class ResponseController {
 
     private final UserRepository userRepository;
-
     private final JwtService jwtService;
-
 
     @GetMapping
     public UserDto getUserInfo() {
@@ -168,6 +170,58 @@ public class ResponseController {
         Map<String, String> response = new HashMap<>();
         response.put("token", newToken);
 
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/profile/profile_pic")
+    public ResponseEntity<?> uploadProfilePicture(@RequestBody Map<String, String> requestMap) throws UnsupportedEncodingException {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+
+            //decode the profile_pic
+            String base64Image = requestMap.get("profile_pic");
+           // System.out.println("decoded: " + base64Image);
+
+            String profilePicString = URLDecoder.decode(base64Image, StandardCharsets.UTF_8);
+            profilePicString = profilePicString.replace(" ","+");
+
+          //  String profilePicString = new String(Base64.getDecoder().decode(base64Image.getBytes(StandardCharsets.UTF_8)));
+
+            // System.out.println("decoded: " + profilePicString);
+
+
+            User user = userRepository.findByUserName(userName)
+                    .orElseThrow(() -> new EntityNotFoundException("User not found!"));
+
+        // Update the profile_pic
+        user.setProfile_pic(profilePicString);
+            userRepository.save(user);
+
+        // Create a new UserDetails with the updated profile_pic
+        UserDetails updatedUserDetails = new User(
+                user.getId(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail(),
+                user.getUsername(),
+                user.getPassword(),
+                user.getRole(),
+                user.getProfile_pic(),
+                user.getBookings() );
+
+        // Generate a new JWT token with the updated data
+        String newToken = jwtService.generateToken(updatedUserDetails);
+
+
+        // Replace the old Authentication in the SecurityContextHolder
+        UsernamePasswordAuthenticationToken newAuthentication =
+                new UsernamePasswordAuthenticationToken(updatedUserDetails, null, updatedUserDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(newAuthentication);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("token", newToken);
 
         return ResponseEntity.ok(response);
     }
