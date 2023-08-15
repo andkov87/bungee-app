@@ -74,7 +74,8 @@ const Registration = () => {
                     email: '',
                     password: ''
                 });
-
+                setFormErrors({});
+                setShowRegModal(true);
 
             } catch (error) {
                 if (error.response && error.response.status === 400) {
@@ -108,11 +109,19 @@ const Registration = () => {
 
     const handleNavigateAfterReg = () => {
         navigate('/');
-
 };
+
+const handleReturnButtonClick = () => {
+    navigate('/');
+  }
 
     return (
         <div className='registration-page-container'>
+             <div className='arrow-container'>
+          <div className='arrow-circle' onClick={handleReturnButtonClick}>
+            <i className="fas fa-chevron-left left-arrow"></i>
+          </div>
+        </div>
             <form className='auth-form' onSubmit={handleSubmit}>
                 <MDBContainer fluid className='my-5 d-flex justify-content-center align-items-center' style={{ height: '100%' }}>
                     <MDBRow className='g-0 align-items-center' >
@@ -177,7 +186,7 @@ const Registration = () => {
                                         onChange={handleInputChange}
                                     />
                                     <div className='button-message-wrap'>
-                                    <button className='signup-button' onClick={() => setShowRegModal(true)}>REGISTER</button>
+                                    <button className='signup-button'>REGISTER</button>
                                     {showRegModal && (
                                                    <RegistrationSuccesPopUp
                                                    isOpen={showRegModal}
@@ -185,9 +194,6 @@ const Registration = () => {
                                                    onClick={handleNavigateAfterReg}
                                                />
                                     )}
-                                    </div>
-                                    <div className='regpage-link'>
-                                        <a href='/' style={{ textDecoration: 'none', color: 'rgb(37, 150, 190)' }}>Back to Main Page</a>
                                     </div>
                                 </MDBCardBody>
                             </MDBCard>

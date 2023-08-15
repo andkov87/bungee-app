@@ -7,7 +7,7 @@
   align-items: center;
   background-color: rgba(223,219,208,255);
   background-image: url('../bungee pics/bungee25.jpg');
-  background-position-x:left 20%;
+  background-position-x:left 15%;
   background-size: contain;
   background-repeat: no-repeat;
   font-family: 'Archivo Black', sans-serif;
@@ -21,7 +21,7 @@
 
 .profile_pic_button{
   width: 40%;
-  background-color: rgb(37, 150, 190);
+  background-color: rgba(255, 193, 7);
   color: white;
   border-radius: 30px; 
   margin-bottom: 15px; 
@@ -86,4 +86,5 @@
 .rounded-circle {
   cursor: pointer;
 }
+
 

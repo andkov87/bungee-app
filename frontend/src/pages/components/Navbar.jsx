@@ -99,7 +99,7 @@ const Navbar = () => {
                                     </a>
                                 )}
                                 {userData !== null && (
-                                    <span className="username" >Hello, {userData.userName} </span>
+                                    <span className="username" >Hello, {userData.userName}! </span>
                                 )}
                         </div>
                     </div>
@@ -110,11 +110,11 @@ const Navbar = () => {
                             <div className="col">
                                 <select className="noStyle">
                                     <option value="english">English</option>
-                                    <option value="hungarian">Hungarian</option>
+                                    <option value="german">German</option>
                                 </select>
                             </div>
                             <div className="col text-end ">
-                                <i className="fas fa-times" style={{ color: 'rgb(37, 150, 190)'}} role="btn" onClick={menuToggle}></i>
+                                <i className="fas fa-times" style={{ color: 'red'}} role="btn" onClick={menuToggle}></i>
                             </div>
                         </div>
                     </div>

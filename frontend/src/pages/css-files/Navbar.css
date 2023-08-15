@@ -120,21 +120,28 @@
     color:rgba(1,170,225,255);
     font-size: 20px;
   }
+
   select.noStyle {
     border:none;
-    outline:none
+    outline:none;
+    background-color: rgb(37, 150, 190);
+    border-radius: 10px;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
 
+
   .username {
+    margin-right: 15px;
     height: 6vh;
     border:none;
     padding:12px;
     display:inline-block;
-    min-width:115px;
-    color: #222;
+    min-width: 115px;
+    color: white;
     background:rgb(37, 180, 220);
     transition: all 300ms linear;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Archivo Black', sans-serif;
     font-size: 20px;
     font-weight: 700;
     border-radius: 25px;

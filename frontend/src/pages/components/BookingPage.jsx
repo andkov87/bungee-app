@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import '../css-files/DatePicker.css';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../AxiosConfig';
 
 
 const BookingPage = () => {
@@ -44,6 +45,15 @@ const BookingPage = () => {
 
   const [isReserved, setIsReserved] = useState(false);
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('jwtToken');
+
+    if (!loggedInUser) {
+        console.log("login first!");
+        navigate('/login');
+    }
+}, [navigate])
+
 
   const generateTimeSlots = () => {
     const startTime = new Date();
@@ -63,8 +73,6 @@ const BookingPage = () => {
 
       //check if the current time slot is in the future
       const isActive = (format(selectedDate, 'dd/MM/yyyy') !== format(new Date(), 'dd/MM/yyyy') || currentTime <= currentTimeSlot);
-      console.log(selectedDate);
-
 
       timeSlots.push({timeSlot, isActive});
       currentTimeSlot += increment;
@@ -107,6 +115,7 @@ const BookingPage = () => {
       setShowCalendarChoose2(false);
     }
   }
+
 
   const handleChooseSite2Click = (text) => {
     setSelectedSiteText(text);
@@ -161,15 +170,6 @@ const BookingPage = () => {
     setShowSummaryPanel(true);
   }
 
-  const handleReservationClick = () => {
-    setIsReserved(true);
-    setShowSiteChoose1(false);
-    setShowSiteChoose2(false);
-    setShowActivity(false);
-    setShowCalendarChoose1(false);
-    setShowTimeChoose1(false);
-  }
-
   const handleHomeButtonClick = () => {
     navigate('/');
   }
@@ -178,6 +178,36 @@ const BookingPage = () => {
     navigate('/');
   }
 
+  const handleCreateBooking = async() => {
+    const formattedDate = selectedDate.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+
+
+    const bookingData = {
+      location: selectedSiteText,
+      activity: selectedActivityText,
+      bookedDate: formattedDate,
+      bookedTime: selectedTime
+    };
+
+    setIsReserved(true);
+    setShowSiteChoose1(false);
+    setShowSiteChoose2(false);
+    setShowActivity(false);
+    setShowCalendarChoose1(false);
+    setShowTimeChoose1(false);
+
+    try{
+      await axiosInstance.post("/booking/new_booking", bookingData);
+      console.log("reservation complete");
+
+    }catch(error) {
+      console.log("error saving new reservation:", error)
+    }
+  }
 
   return (
     <div className='booking-page'>
@@ -341,7 +371,7 @@ const BookingPage = () => {
                 </div>
               ) : (
                 <div className='book-button-container'>
-                  <button className='book-button' onClick={handleReservationClick}>RESERVE</button>
+                  <button className='book-button' onClick={handleCreateBooking}>RESERVE</button>
                 </div>
               )}
             </div>

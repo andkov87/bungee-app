@@ -42,9 +42,18 @@ const Login = () => {
     }
   };
 
+  const handleReturnButtonClick = () => {
+    navigate('/');
+  }
+
   return (
     <div
       className='login-page'>
+                 <div className='arrow-container'>
+          <div className='arrow-circle' onClick={handleReturnButtonClick}>
+            <i className="fas fa-chevron-left left-arrow"></i>
+          </div>
+        </div>
       <form className='auth-form ' onSubmit={handleSubmit}>
         <MDBContainer fluid>
 
@@ -85,9 +94,6 @@ const Login = () => {
 
                   <div>
                     <p className="mb-0">Don&rsquo;t have an account? <a href="/auth" className="text-white-50 fw-bold">Sign Up</a></p>
-                  </div>
-                  <div className='loginpage-link'>
-                    <a href='/' style={{ textDecoration: 'none', color: 'rgb(37, 150, 190)' }}>Back to Main Page</a>
                   </div>
                 </MDBCardBody>
               </MDBCard>
