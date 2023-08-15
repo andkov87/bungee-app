@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeUp, faVolumeMute } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player';
+import bungee_vid from '../background video/bungeevid4.mp4'
 import bungee_pic from '../bungee pics/bungee17.png'
 import bungee_pic2 from '../bungee pics/bungee18.jpg'
 import bungeeCollage from '../bungee pics/bungeeCollage.png'
@@ -63,7 +64,7 @@ const LandingPage = () => {
         volume={volume}
         controls={false}
         config={{file: { attributes: {controlsList: 'nodownload', disablePictureInPicture: true}}}}
-      //  url={videoFile}        
+        url={bungee_vid}        
         />     
         {!play ? (
           <div className='firstDiv'>
