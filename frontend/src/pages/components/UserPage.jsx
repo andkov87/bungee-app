@@ -106,21 +106,19 @@ const UserPage = () => {
     };
 
     const handleSaveNewProfilePic = async (preview) => {
-                try {
-                    await axiosInstance.put(`/user/profile/profile_pic`, { profile_pic: preview });
-                    refetchUserData();
+        try {
+            await axiosInstance.put(`/user/profile/profile_pic`, { profile_pic: preview });
+            refetchUserData();
 
 
-                   // console.log(userData.profile_pic);
-                    setPreview(userData.profile_pic);
-                    setShowButton(false);
+            // console.log(userData.profile_pic);
+            setPreview(userData.profile_pic);
+            setShowButton(false);
 
-                } catch (error) {
-                    console.error("Error updating profile_pic: ", error.response);
-                }
-        };
-    
-
+        } catch (error) {
+            console.error("Error updating profile_pic: ", error.response);
+        }
+    };
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem('jwtToken');
@@ -138,14 +136,13 @@ const UserPage = () => {
         return null;
     }
 
-
     return (
         <div>
             <section className="profile-section" >
                 <MDBContainer className="py-5">
                     <div className='arrow-container2'>
-                        <div className='arrow-circle2' onClick={handleReturnButtonClick}>
-                            <i className="fas fa-chevron-left left-arrow2"></i>
+                        <div className='arrow-circle2' style={{backgroundColor: 'rgb(37, 150, 190)'}} onClick={handleReturnButtonClick}>
+                            <i className="fas fa-chevron-left left-arrow2" style={{color: 'white'}}></i>
                         </div>
                     </div>
                     <MDBRow>
@@ -159,13 +156,11 @@ const UserPage = () => {
                             <MDBCard className="mb-4 card-container">
                                 <MDBCardBody className="text-center">
                                     {preview ? (
-                                        
                                         <MDBCardImage
-                                            
                                             src={preview}
                                             alt="avatar"
                                             className="rounded-circle"
-                                            style={{ width: '180px', height: '180px', objectFit: 'cover' }}
+                                            style={{ width: '190px', height: '190px', objectFit: 'cover' }}
                                             onClick={(event) => {
                                                 event.preventDefault();
                                                 fileInputRef.current.click();
@@ -176,7 +171,7 @@ const UserPage = () => {
                                             src={userData.profile_pic ? userData.profile_pic : profilepic_sample2}
                                             alt="avatar"
                                             className="rounded-circle"
-                                            style={{ width: '180px', height: '180px' }}
+                                            style={{ width: '190px', height: '190px' }}
                                             onClick={(event) => {
                                                 event.preventDefault();
                                                 fileInputRef.current.click();
@@ -201,14 +196,14 @@ const UserPage = () => {
                                 </form>
                                 {showButton && (
                                     <button className="profile_pic_button"
-                                            onClick={() => handleSaveNewProfilePic(preview)}
+                                        onClick={() => handleSaveNewProfilePic(preview)}
                                     >SAVE PROFILE PICTURE</button>
                                 )}
                             </MDBCard>
                         </MDBCol>
                         <MDBCol lg="8">
                             <MDBCard className="mb-4">
-                                <MDBCardBody>
+                                <MDBCardBody >
                                     <MDBRow>
                                         <MDBCol sm="3">
                                             <MDBCardText>Name</MDBCardText>
@@ -257,14 +252,26 @@ const UserPage = () => {
                                 <MDBCol md="6">
                                     <MDBCard className="mb-4 mb-md-0">
                                         <MDBCardBody>
-                                            <MDBCardText className="mb-4" style={{ fontSize: '1.3rem', textAlign: 'center' }}> RESERVATION 1</MDBCardText>
-                                            <MDBCardText className="mb-1" style={{ fontSize: '1.07rem' }}>Location: </MDBCardText>
+                                            <MDBCardText className="mb-4" style={{ fontSize: '1.3rem', textAlign: 'center', color: 'rgb(37, 150, 190)', textDecoration: 'underline', textDecorationThickness: '2px' }}> RESERVATION 1</MDBCardText>
+                                            <MDBCardText className="mb-1" style={{ fontSize: '1.07rem', color: 'rgb(37, 150, 190)' }}>LOCATION:{' '}
+                                            {userData.bookings.length > 0 && (
+                                            <span style={{color: 'rgba(33, 37, 41, 0.75)'}}>{userData.bookings[0].location}</span>)}
+                                            </MDBCardText>
 
-                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem' }}>Activity: </MDBCardText>
+                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem', color: 'rgb(37, 150, 190)' }}>ACTIVITY:{' '} 
+                                            {userData.bookings.length > 0 && (
+                                            <span style={{color: 'rgba(33, 37, 41, 0.75)'}}>{userData.bookings[0].activity}</span>)}
+                                            </MDBCardText>
 
-                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem' }}>Date: </MDBCardText>
+                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem', color: 'rgb(37, 150, 190)' }}>DATE:{' '} 
+                                            {userData.bookings.length > 0 && (
+                                            <span style={{color: 'rgba(33, 37, 41, 0.75)'}}>{userData.bookings[0].bookedDate}</span>)}
+                                            </MDBCardText>
 
-                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem' }}>Time: </MDBCardText>
+                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem', color: 'rgb(37, 150, 190)' }}>TIME:{' '} 
+                                            {userData.bookings.length > 0 && (
+                                            <span style={{color: 'rgba(33, 37, 41, 0.75)'}}>{userData.bookings[0].bookedTime}</span>)}
+                                            </MDBCardText>
 
                                         </MDBCardBody>
                                     </MDBCard>
@@ -273,16 +280,30 @@ const UserPage = () => {
                                 <MDBCol md="6">
                                     <MDBCard className="mb-4 mb-md-0">
                                         <MDBCardBody>
-                                            <MDBCardText className="mb-4" style={{ fontSize: '1.3rem', textAlign: 'center' }}> RESERVATION 2</MDBCardText>
-                                            <MDBCardText className="mb-1" style={{ fontSize: '1.07rem' }}>Location: </MDBCardText>
+                                            <MDBCardText className="mb-4" style={{ fontSize: '1.3rem', textAlign: 'center', color: 'rgb(37, 150, 190)', textDecoration: 'underline', textDecorationThickness: '2px' }}> RESERVATION 2</MDBCardText>
+                                            
+                                            <MDBCardText className="mb-1" style={{ fontSize: '1.07rem', color: 'rgb(37, 150, 190)' }}>LOCATION:{' '}
+                                            {userData.bookings.length > 1 && (
+                                            <span style={{color: 'rgba(33, 37, 41, 0.75)'}}>{userData.bookings[1].location}</span>)}
+                                             </MDBCardText>
 
-                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem' }}>Activity: </MDBCardText>
+                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem', color: 'rgb(37, 150, 190)' }}>ACTIVITY:{' '}
+                                            {userData.bookings.length > 1 && (
+                                            <span style={{color: 'rgba(33, 37, 41, 0.75)'}}>{userData.bookings[1].activity}</span>)}
+                                             </MDBCardText>
 
-                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem' }}>Date: </MDBCardText>
+                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem', color: 'rgb(37, 150, 190)' }}>DATE:{' '}
+                                            {userData.bookings.length > 1 && (
+                                            <span style={{color: 'rgba(33, 37, 41, 0.75)'}}>{userData.bookings[1].bookedDate}</span>)}
+                                             </MDBCardText>
 
-                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem' }}>Time: </MDBCardText>
-
-                                            {showUserNameModal && (
+                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.07rem', color: 'rgb(37, 150, 190)' }}>TIME:{' '}
+                                            {userData.bookings.length > 1 && (
+                                            <span style={{color: 'rgba(33, 37, 41, 0.75)'}}>{userData.bookings[1].bookedTime}</span>)}
+                                             </MDBCardText>
+                             
+                                        </MDBCardBody>
+                                                   {showUserNameModal && (
                                                 <ChangeUserNamePopUp
                                                     isOpen={showUserNameModal}
                                                     onClose={() => setShowUserNameModal(false)}
@@ -302,7 +323,6 @@ const UserPage = () => {
                                                     setIsEmailTaken={setIsEmailTaken}
                                                 />
                                             )}
-                                        </MDBCardBody>
                                     </MDBCard>
                                 </MDBCol>
                             </MDBRow>

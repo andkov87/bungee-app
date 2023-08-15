@@ -15,10 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -134,12 +132,12 @@ public class ResponseController {
             return ResponseEntity.badRequest().body(response);
         }
 
-        // Update the username or email
+        // Update the email
         user.setEmail(newEmail);
         userRepository.save(user);
-        System.out.println(user.getEmail());
 
-        // Create a new UserDetails with the updated username
+
+        // Create a new UserDetails with the updated email
         UserDetails updatedUserDetails = new User(
                 user.getId(),
                 user.getFirstName(),
@@ -151,11 +149,9 @@ public class ResponseController {
                 user.getProfile_pic(),
                 user.getBookings() );
 
-        System.out.println(updatedUserDetails.getUsername());
 
         // Generate a new JWT token with the updated data
         String newToken = jwtService.generateToken(updatedUserDetails);
-        System.out.println(newToken);
 
 
         // Replace the old Authentication in the SecurityContextHolder
@@ -163,19 +159,18 @@ public class ResponseController {
                 new UsernamePasswordAuthenticationToken(updatedUserDetails, null, updatedUserDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(newAuthentication);
 
-        HttpHeaders headers = new HttpHeaders();
+       /* HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization","Bearer " + newToken);
-        System.out.println(headers);
+        System.out.println(headers);*/
 
         Map<String, String> response = new HashMap<>();
         response.put("token", newToken);
-
 
         return ResponseEntity.ok(response);
     }
 
     @PutMapping("/profile/profile_pic")
-    public ResponseEntity<?> uploadProfilePicture(@RequestBody Map<String, String> requestMap) throws UnsupportedEncodingException {
+    public ResponseEntity<?> uploadProfilePicture(@RequestBody Map<String, String> requestMap) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
@@ -190,7 +185,6 @@ public class ResponseController {
           //  String profilePicString = new String(Base64.getDecoder().decode(base64Image.getBytes(StandardCharsets.UTF_8)));
 
             // System.out.println("decoded: " + profilePicString);
-
 
             User user = userRepository.findByUserName(userName)
                     .orElseThrow(() -> new EntityNotFoundException("User not found!"));
@@ -213,7 +207,6 @@ public class ResponseController {
 
         // Generate a new JWT token with the updated data
         String newToken = jwtService.generateToken(updatedUserDetails);
-
 
         // Replace the old Authentication in the SecurityContextHolder
         UsernamePasswordAuthenticationToken newAuthentication =

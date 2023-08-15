@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { useNavigate } from 'react-router-dom';
 
 
-
 const RegistrationSuccesPopUp = ({isOpen, onClose}) => {
 
 const navigate = useNavigate();

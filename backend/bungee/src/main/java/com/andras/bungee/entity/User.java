@@ -43,12 +43,7 @@ public class User implements UserDetails {
     @Column(name = "profile_pic", columnDefinition = "LONGTEXT")
     private String profile_pic;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_bookings",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "booking_id")
-    )
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Booking> bookings = new LinkedHashSet<>();
 
     @Override

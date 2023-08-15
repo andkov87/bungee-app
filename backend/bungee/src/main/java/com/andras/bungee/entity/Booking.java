@@ -28,10 +28,10 @@
         private String activity;
 
         @Column(name = "booked_date")
-        private LocalDate bookedDate;
+        private String bookedDate;
 
         @Column(name = "booked_time")
-        private LocalTime bookedTime;
+        private String bookedTime;
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "user_id")
