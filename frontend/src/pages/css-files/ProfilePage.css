@@ -87,4 +87,14 @@
   cursor: pointer;
 }
 
+.delete-booking-button {
+  width: 20%;
+  background-color: red;
+  color: white;
+  font-size: x-small;
+  font-weight: 700;
+  border-radius: 30px;
+  margin: auto;
+}
+
 

@@ -32,7 +32,6 @@ const UserPage = () => {
 
     const [showButton, setShowButton] = useState(false);
 
-
     const fileInputRef = useRef();
 
     useEffect(() => {
@@ -110,13 +109,22 @@ const UserPage = () => {
             await axiosInstance.put(`/user/profile/profile_pic`, { profile_pic: preview });
             refetchUserData();
 
-
-            // console.log(userData.profile_pic);
             setPreview(userData.profile_pic);
             setShowButton(false);
 
         } catch (error) {
             console.error("Error updating profile_pic: ", error.response);
+        }
+    };
+
+
+    const handleDeleteBooking = async(bookingId) => {
+        try {
+        await axiosInstance.delete(`/booking/delete_booking/${bookingId}`);
+        refetchUserData();
+
+        } catch(error) {
+            console.log("Error deleting booking:", error);
         }
     };
 
@@ -274,6 +282,10 @@ const UserPage = () => {
                                             </MDBCardText>
 
                                         </MDBCardBody>
+                                        {userData.bookings.length > 0 && (
+
+                                        <button className="delete-booking-button" onClick={() => handleDeleteBooking(userData.bookings[0].id)}>DELETE BOOKING</button>
+                                        )}
                                     </MDBCard>
                                 </MDBCol>
 
@@ -303,6 +315,10 @@ const UserPage = () => {
                                              </MDBCardText>
                              
                                         </MDBCardBody>
+                                        {userData.bookings.length > 1 && (
+                                        <button className="delete-booking-button" onClick={() => handleDeleteBooking(userData.bookings[0].id)}>DELETE BOOKING</button>
+                                        )}
+
                                                    {showUserNameModal && (
                                                 <ChangeUserNamePopUp
                                                     isOpen={showUserNameModal}
