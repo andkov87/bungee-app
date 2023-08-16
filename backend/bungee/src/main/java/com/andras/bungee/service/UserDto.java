@@ -24,7 +24,8 @@ public class UserDto {
     public static UserDto fromUser(User user) {
         Set<BookingDto> bookingDtos = user.getBookings().stream()
                 .map(booking -> BookingDto.builder()
-                .location(booking.getLocation())
+                        .id(booking.getId())
+                        .location(booking.getLocation())
                         .activity(booking.getActivity())
                         .bookedDate(booking.getBookedDate())
                         .bookedTime(booking.getBookedTime())

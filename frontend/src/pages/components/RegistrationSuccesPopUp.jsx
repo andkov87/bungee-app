@@ -10,6 +10,8 @@ const navigate = useNavigate();
 
 
 const handleCloseRegistrationModal = () => {
+
+    localStorage.removeItem('jwtToken');
     navigate('/');
 }
 
@@ -19,7 +21,7 @@ const handleCloseRegistrationModal = () => {
         <h2>Registration successful!</h2>
 
         <div className='modal-button-container'>
-          <button onClick={handleCloseRegistrationModal}>Back to Main Page</button>
+          <button onClick={handleCloseRegistrationModal}>Back to main Page</button>
         </div>
       </div>
     </Modal>

@@ -6,6 +6,8 @@ import com.andras.bungee.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -22,8 +24,12 @@ public class BookingService {
         return user.getBookings();
     }
 
-    public Booking createBooking(Booking booking) {
-        return bookingRepository.save(booking);
+    public Optional<Booking> getBookingById(Integer bookingId) {
+        return bookingRepository.findById(bookingId);
+    }
+
+    public void createBooking(Booking booking) {
+        bookingRepository.save(booking);
     }
 
     public void updateBooking(Booking booking) {

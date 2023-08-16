@@ -14,6 +14,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookingDto {
+    private Integer id;
     private String location;
     private String activity;
     private String bookedDate;

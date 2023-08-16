@@ -24,11 +24,11 @@ const Navbar = () => {
         }
     };
 
-    const deleteToken = () => {
+    /*const deleteToken = () => {
         const token = localStorage.getItem('jwtToken')
         localStorage.removeItem('jwtToken')
         console.log(token);
-    }
+    }*/
 
     const handleLogout = () => {
 
@@ -98,7 +98,7 @@ const Navbar = () => {
                                         <button className="blackLink siteLink" id="logButton">LOGIN</button>
                                     </a>
                                 )}
-                                {userData !== null && (
+                                {isLoggedIn && userData !== null && (
                                     <span className="username" >Hello, {userData.userName}! </span>
                                 )}
                         </div>
@@ -119,7 +119,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div>
-                        <a href="/" className="nav-menu-item" onClick={deleteToken}><i className="fas fa-home me-3" style={{ color: 'white' }}></i>Home</a>
+                        <a href="/" className="nav-menu-item"><i className="fas fa-home me-3" style={{ color: 'white' }}></i>Home</a>
                         <a href="/user" className="nav-menu-item" ><i className="fab fa-product-hunt me-3" style={{ color: 'white' }}></i>My Bookings</a>
                         <a href="/booking" className="nav-menu-item"><i className="fas fa-search me-3" style={{ color: 'white' }}></i>Booking</a>
                         <a href="#" className="nav-menu-item"><i className="fas fa-wrench me-3" style={{ color: 'white' }}></i>Services</a>

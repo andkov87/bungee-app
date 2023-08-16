@@ -107,9 +107,6 @@ const Registration = () => {
         }
     };
 
-    const handleNavigateAfterReg = () => {
-        navigate('/');
-};
 
 const handleReturnButtonClick = () => {
     navigate('/');
@@ -191,7 +188,6 @@ const handleReturnButtonClick = () => {
                                                    <RegistrationSuccesPopUp
                                                    isOpen={showRegModal}
                                                    onClose={() => setShowRegModal(false)}
-                                                   onClick={handleNavigateAfterReg}
                                                />
                                     )}
                                     </div>
