@@ -6,6 +6,8 @@ import '../css-files/DatePicker.css';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../AxiosConfig';
+import useBookingData from '../hooks/useBookingData';
+
 
 
 const BookingPage = () => {
@@ -45,17 +47,21 @@ const BookingPage = () => {
 
   const [isReserved, setIsReserved] = useState(false);
 
+  const [bookingData, refetchBookingData] = useBookingData();
+
+
   useEffect(() => {
     const loggedInUser = localStorage.getItem('jwtToken');
 
     if (!loggedInUser) {
-        console.log("login first!");
-        navigate('/login');
+      console.log("login first!");
+      navigate('/login');
     }
-}, [navigate])
+  }, [navigate])
 
 
   const generateTimeSlots = () => {
+
     const startTime = new Date();
     startTime.setHours(9, 45, 0); // set start time to 9:45
 
@@ -72,9 +78,19 @@ const BookingPage = () => {
       const timeSlot = new Date(currentTimeSlot);
 
       //check if the current time slot is in the future
-      const isActive = (format(selectedDate, 'dd/MM/yyyy') !== format(new Date(), 'dd/MM/yyyy') || currentTime <= currentTimeSlot);
+      const isFuture = (format(selectedDate, 'dd/MM/yyyy') !== format(new Date(), 'dd/MM/yyyy') || currentTime <= currentTimeSlot);
 
-      timeSlots.push({timeSlot, isActive});
+      // check if the time slot is inactive due to existing booking
+      const isInactive = bookingData.some(booking =>
+        booking.location === selectedSiteText &&
+        booking.activity === selectedActivityText &&
+        booking.bookedDate === format(selectedDate, 'dd/MM/yyyy') &&
+        booking.bookedTime === format(timeSlot, 'HH:mm'));
+
+      // if it's not in the past and not already booked, it's active
+      const isActive = isFuture && !isInactive;
+
+      timeSlots.push({ timeSlot, isActive });
       currentTimeSlot += increment;
     }
 
@@ -88,6 +104,7 @@ const BookingPage = () => {
   }
 
   const handleDateChange = (date) => {
+    refetchBookingData();
     setSelectedDate(date);
     setShowCalendarChoose2(false);
     setShowTimeChoose1(true);
@@ -99,7 +116,6 @@ const BookingPage = () => {
     const currentDate = new Date();
     setSelectedDate(currentDate);
   }, []);
-
 
 
   const handleChooseSite1Click = () => {
@@ -178,7 +194,7 @@ const BookingPage = () => {
     navigate('/');
   }
 
-  const handleCreateBooking = async() => {
+  const handleCreateBooking = async () => {
     const formattedDate = selectedDate.toLocaleDateString('en-GB', {
       day: '2-digit',
       month: '2-digit',
@@ -200,11 +216,11 @@ const BookingPage = () => {
     setShowCalendarChoose1(false);
     setShowTimeChoose1(false);
 
-    try{
+    try {
       await axiosInstance.post("/booking/new_booking", bookingData);
       console.log("reservation complete");
 
-    }catch(error) {
+    } catch (error) {
       console.log("error saving new reservation:", error)
     }
   }
@@ -320,8 +336,8 @@ const BookingPage = () => {
                   <div className='time-price-slot-container'>
                     {generateTimeSlots().map((timeSlotObj, index) => (
                       <div key={index}
-                          className={'time-slot-row'} 
-                          onClick={timeSlotObj.isActive ? () => handleChooseTime2Click(timeSlotObj.timeSlot) : null}>
+                        className={'time-slot-row'}
+                        onClick={timeSlotObj.isActive ? () => handleChooseTime2Click(timeSlotObj.timeSlot) : null}>
 
                         <div className={`time-picker-timecolumn ${timeSlotObj.isActive ? 'active-time-slot' : 'inactive-time-slot'}`}>
                           <div className='timecolumn-num'>

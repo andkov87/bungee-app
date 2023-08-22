@@ -5,6 +5,7 @@ import com.andras.bungee.dao.BookingRepository;
 import com.andras.bungee.dao.UserRepository;
 import com.andras.bungee.entity.Booking;
 import com.andras.bungee.entity.User;
+import com.andras.bungee.service.BookingDateTimeDto;
 import com.andras.bungee.service.BookingDto;
 import com.andras.bungee.service.BookingService;
 import jakarta.persistence.EntityNotFoundException;
@@ -20,10 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/booking")
@@ -33,6 +31,13 @@ public class BookingResponseController {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final BookingService bookingService;
+
+    @GetMapping("/all_bookings")
+    public ResponseEntity<List<BookingDateTimeDto>> getAllBookings() {
+        List<BookingDateTimeDto> bookedDatesTimes = bookingService.getAllBookedDatesAndTimes();
+
+        return ResponseEntity.ok(bookedDatesTimes);
+    }
 
 
     @PostMapping("/new_booking")

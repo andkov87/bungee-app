@@ -14,7 +14,6 @@
     justify-content: center;
     align-items: center;
     background-color: #222;
-    gap: 30px;
     border-radius: 30px;
     position: relative;
 }
@@ -25,14 +24,21 @@
     color: whitesmoke;
 }
 
+.modal-panel-reg h3 {
+    font-size: 21px;
+    font-family: 'Archivo Black', sans-serif;
+    color: whitesmoke;
+    margin-bottom: 20px;
+}
+
 .modal-button-container { 
     display: flex;
-    gap: 15px;
 }
 
 .modal-button-container button {
     border-radius: 20px;
     width: 9vw;
     background-color: rgb(37, 150, 190);
+    color: white;
 }
 

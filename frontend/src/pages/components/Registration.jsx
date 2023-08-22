@@ -29,7 +29,7 @@ const Registration = () => {
     });
 
     const [formErrors, setFormErrors] = useState({});
-    const [showRegModal, setShowRegModal] = useState(false);
+    const [showRegModal, setShowRegModal] = useState(true);
 
 
     const handleInputChange = (e) => {
