@@ -7,16 +7,25 @@
   align-items: center;
   background-color: rgba(223,219,208,255);
   background-image: url('../bungee pics/bungee25.jpg');
-  background-position-x:left 15%;
+  background-position-x:left 80%;
   background-size: contain;
   background-repeat: no-repeat;
   font-family: 'Archivo Black', sans-serif;
+  font-size: large;
 }
 
 .card-container {
   display: flex;
-  align-items: center;
-  
+  align-items: center;  
+}
+
+.mb-4 {
+  opacity: 0.9;
+}
+
+.avatar-container{
+  opacity: 1;
+  cursor: pointer;
 }
 
 .profile_pic_button{
@@ -36,7 +45,7 @@
 
 .delete-account-button {
   width: 30%;
-  background-color: red;
+  background-color: black;
   color: white;
   font-size: smaller;
   font-weight: 700;
@@ -51,7 +60,7 @@
 
 .change-username-button {
   width: 24%;
-  background-color: rgb(37, 150, 190);
+  background-color: black;
   height: 99%;
   color: white;
   font-size: smaller;
@@ -67,7 +76,7 @@
 
 .change-email-button {
   width: 24%;
-  background-color: rgb(37, 150, 190);
+  background-color: black;
   height: 100%;
   color: white;
   font-size: smaller;
@@ -83,17 +92,14 @@
   text-align: center;
 }
 
-.rounded-circle {
-  cursor: pointer;
-}
 
 .delete-booking-button {
   width: 20%;
-  background-color: red;
+  background-color: black;
   color: white;
   font-size: x-small;
   font-weight: 700;
-  border-radius: 30px;
+  border-radius: 20px;
   margin: auto;
 }
 

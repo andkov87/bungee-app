@@ -77,7 +77,6 @@ public class ResponseController {
         // Update the username
         user.setUserName(newUserName);
         userRepository.save(user);
-        System.out.println(user.getUsername());
 
         // Create a new UserDetails with the updated username
         UserDetails updatedUserDetails = new User(
@@ -91,12 +90,8 @@ public class ResponseController {
                 user.getProfile_pic(),
                 user.getBookings());
 
-        System.out.println(updatedUserDetails.getUsername());
-
         // Generate a new JWT token with the updated data
         String newToken = jwtService.generateToken(updatedUserDetails);
-        System.out.println(newToken);
-
 
         // Replace the old Authentication in the SecurityContextHolder
         UsernamePasswordAuthenticationToken newAuthentication =

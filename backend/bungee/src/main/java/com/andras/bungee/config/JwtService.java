@@ -47,13 +47,13 @@ public class JwtService {
     //compact = will generate and return the token
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         return Jwts
-                .builder()
-                .setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 48))
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
-                .compact();
+                .builder() //starts the process of building a JWT
+                .setClaims(extraClaims) //pieces of information included in the JWT payload
+                .setSubject(userDetails.getUsername()) //the subject represents the entity
+                .setIssuedAt(new Date(System.currentTimeMillis())) //indicates when token is issued
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 48)) //sets expiration time
+                .signWith(getSignInKey(), SignatureAlgorithm.HS256) //signs token with secret-key
+                .compact(); //finalizes JWT building process
     }
 
     //validates a token. Need to pass UserDetails to validate if this token belongs to this userDetails.

@@ -19,11 +19,8 @@ axiosInstance.interceptors.response.use(
     if (tokenResponse && tokenResponse.token) {
       const newToken = tokenResponse.token;
 
-      console.log(newToken);    
-
       // Update the stored token with the new token
-      localStorage.setItem('jwtToken', newToken);
-      
+      localStorage.setItem('jwtToken', newToken);      
 
       // Update the 'Authorization' header with the new token for subsequent requests
       axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${newToken}`; 

@@ -580,6 +580,7 @@
 .back-to-home-button {
     background-color: rgb(37, 150, 190);
     color: white;
-    font-size: smaller;
+    font-size: small;
+    padding: 0.5rem;
     border-radius: 30px;
 }
